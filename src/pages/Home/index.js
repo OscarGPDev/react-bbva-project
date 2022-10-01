@@ -1,13 +1,15 @@
-import FetchData from "../components/FetchData";
-import CalidadAireContext from "../context/CalidadAireContext";
+import FetchData from "../../components/FetchData";
+import CalidadAireContext from "../../context/CalidadAireContext";
 import {useReducer} from "react";
-import calidadAireReducer from "../reducers/calidadAireReducer";
-import CalidadAireTable from "../components/CalidadAireTable";
-
+import calidadAireReducer from "../../reducers/calidadAireReducer";
+import CalidadAireTable from "../../components/CalidadAireTable";
+import "./index.css"
 
 const Home = () => {
 
-    const [calidadAireState, calidadAireDispatch] = useReducer(calidadAireReducer, {});
+    const [calidadAireState, calidadAireDispatch] = useReducer(calidadAireReducer, {
+        data:[]
+    });
 
     const providerState = {
         calidadAireState,
@@ -19,13 +21,14 @@ const Home = () => {
             responsiblePollutant: result.stations[0]?.indexes[0]?.responsiblePollutant,
             valueIndexes: result.stations[0]?.indexes[0]?.value,
             scale: result.stations[0]?.indexes[0]?.scale,
-            averagedOverInHours: result.stations[0].measurements[0].averagedOverInHours,
-            unit: result.stations[0].measurements[0].unit,
-            valueMeasurements: result.stations[0].measurements[0].value,
-            pollutant: result.stations[0].measurements[0].pollutant,
+            averagedOverInHours: result.stations[0]?.measurements[0]?.averagedOverInHours,
+            unit: result.stations[0].measurements[0]?.unit,
+            valueMeasurements: result.stations[0]?.measurements[0]?.value,
+            pollutant: result.stations[0]?.measurements[0]?.pollutant,
             source_id: result.stations[0].source_id,
             name: result.stations[0].name,
-            id: result.stations[0].id
+            idStation: result.stations[0].id,
+            id:result._id
         }))
     }
     return (

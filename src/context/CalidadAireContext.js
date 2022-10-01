@@ -1,7 +1,7 @@
-import React, {createContext, useContext} from 'react';
+import {createContext, useContext} from 'react';
 
 
-const CalidadAireContext = createContext({});
+const CalidadAireContext = createContext();
 
 export function useCalidadAireContext() {
     return useContext(CalidadAireContext);

@@ -1,0 +1,17 @@
+tbody > tr:nth-child(2n+1) {
+    background-color: #9c9c9c;
+    border: none;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+thead > tr > td {
+    font-weight: 900;
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+}

@@ -1,10 +1,13 @@
-import {useEffect, useReducer} from "react";
+import {useEffect} from "react";
+import {useCalidadAireContext} from "../context/CalidadAireContext";
 
 const FetchData = ({fetchPromise, actionType,}) => {
-    const [state, dispatch] = useReducer()
+    const {calidadAireDispatch} = useCalidadAireContext();
     useEffect(() => {
-        fetchPromise.then(response => dispatch(actionType, response));
-    }, [])
+        fetchPromise.then(response => {
+            calidadAireDispatch({type: actionType, payload: response})
+        });
+    }, []);
     return null
 };
 export default FetchData;
