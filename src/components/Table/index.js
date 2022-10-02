@@ -40,31 +40,33 @@ const Index = ({data, headers}) => {
             setSortingBy({id: header.id, ascending: !sortingBy.ascending, default: false});
         }
     }
-    return <table>
-        <thead>
-        <tr>
-            {headers?.map(header => <td key={`header-${header.id}`}
-                                        onClick={() => onClickSorting(header)}>{header.name}{(
-                        (header.id === sortingBy.id) || (sortingBy.default && header.orderBy)
-                    ) &&
-                    (sortingBy.default ?
-                        header.ascending ?
-                            " ↑" :
-                            " ↓"
-                        : sortingBy.ascending ?
-                            " ↑" :
-                            " ↓")
-                }
-                </td>
-            )}
-        </tr>
-        </thead>
-        <tbody>
-        {data?.map((row, rowIndex) => <tr key={`row-${rowIndex}`}>
-            {headers?.map((header, colIndex) => <td
-                key={`${row.id}-${rowIndex}-${colIndex}`}>{header.drawFunction ? header.drawFunction(row) : row[header.value]}</td>)}
-        </tr>)}
-        </tbody>
-    </table>
+    return <div className="table-container">
+        <table>
+            <thead>
+            <tr>
+                {headers?.map(header => <th key={`header-${header.id}`}
+                                            onClick={() => onClickSorting(header)}>{header.name}{(
+                            (header.id === sortingBy.id) || (sortingBy.default && header.orderBy)
+                        ) &&
+                        (sortingBy.default ?
+                            header.ascending ?
+                                " ↑" :
+                                " ↓"
+                            : sortingBy.ascending ?
+                                " ↑" :
+                                " ↓")
+                    }
+                    </th>
+                )}
+            </tr>
+            </thead>
+            <tbody>
+            {data?.map((row, rowIndex) => <tr key={`row-${rowIndex}`}>
+                {headers?.map((header, colIndex) => <td
+                    key={`${row.id}-${rowIndex}-${colIndex}`}>{header.drawFunction ? header.drawFunction(row) : row[header.value]}</td>)}
+            </tr>)}
+            </tbody>
+        </table>
+    </div>
 }
 export default Index;

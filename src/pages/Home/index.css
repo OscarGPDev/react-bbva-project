@@ -1,4 +1,12 @@
 .App{
     display: flex;
     justify-content:center;
+    flex-direction:column;
+    align-items:center;
+}
+h1{
+    background-color: #FFF0C9;
+    /*background-color: #00d0d0;*/
+    width: 100%;
+    margin-top: 0;
 }

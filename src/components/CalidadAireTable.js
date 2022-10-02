@@ -5,7 +5,7 @@ const CalidadAireTable = () => {
     const headers = [{
         name: "Fecha de calculo", value: "calculationTime", id: 1
     }, {
-        name: "Principal contaminante", value: "responsiblePollutant", id: 2
+        name: "Contaminante responsable", value: "responsiblePollutant", id: 2
     }, {
         name: "Valor", value: "value", id: 3
     }, {
@@ -17,7 +17,12 @@ const CalidadAireTable = () => {
     }, {
         name: "Contaminante", value: "pollutant", id: 7
     }, {
-        name: "Ubicación", drawFunction: (row) => `${row.source_id} ${row.name} ${row.idStation}`, id: 8
+        name: "Ubicación",
+        drawFunction: (row) => `${row.source_id} ${row.name} ${row.idStation}`,
+        id: 8,
+        value: "source_id"
+    }, {
+        name: "Coordenadas", drawFunction: (row) => `lat: ${row.lat}, long: ${row.long}`, id: 9, value: "lat"
     }];
     const {calidadAireState} = useCalidadAireContext();
     return <div>

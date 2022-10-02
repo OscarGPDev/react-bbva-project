@@ -25,6 +25,8 @@ const Home = () => {
             unit: result.stations[0].measurements[0]?.unit,
             valueMeasurements: result.stations[0]?.measurements[0]?.value,
             pollutant: result.stations[0]?.measurements[0]?.pollutant,
+            lat:result.stations[0]?.location?.lat,
+            long:result.stations[0]?.location?.lon,
             source_id: result.stations[0].source_id,
             name: result.stations[0].name,
             idStation: result.stations[0].id,
@@ -34,6 +36,8 @@ const Home = () => {
     return (
         <div className="App">
             <CalidadAireContext.Provider value={providerState}>
+                <h1>Calidad del aire</h1>
+                <p>Toca la cabecera de la tabla para reordenar su contenido</p>
                 <FetchData
                     fetchPromise={
                         fetch("https://api.datos.gob.mx/v1/calidadAire")
